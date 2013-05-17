@@ -1,0 +1,14 @@
+default:
+  extensions:
+    VIPSoft\DoctrineDataFixturesExtension\Extension:
+          autoload:    true
+          directories: ~
+          fixtures:    ~
+    Behat\Symfony2Extension\Extension:
+        mink_driver: true
+    Behat\MinkExtension\Extension:
+#        javascript_session: selenium2
+        default_session: selenium2
+        base_url: http://sonkraina.local/app_test.php
+        browser_name: firefox
+        selenium2: ~
