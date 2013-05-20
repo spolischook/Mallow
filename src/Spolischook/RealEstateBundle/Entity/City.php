@@ -6,12 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Region
+ * Settlement
  *
- * @ORM\Table(name="region")
+ * @ORM\Table(name="city")
  * @ORM\Entity
  */
-class Region
+class City
 {
     /**
      * @var integer
@@ -29,13 +29,19 @@ class Region
      */
     private $name;
 
-    /** @ORM\OneToMany(targetEntity="RealEstate", mappedBy="region") */
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="city_type", type="string", columnDefinition="ENUM('city', 'village', 'urban_village')", nullable=false)
+     */
+    private $type;
+
+    /** @ORM\OneToMany(targetEntity="RealEstate", mappedBy="city") */
     private $realEstates;
 
     public function __construct() {
         $this->realEstates = new ArrayCollection();
     }
-
 
     /**
      * Get id
@@ -51,7 +57,7 @@ class Region
      * Set name
      *
      * @param string $name
-     * @return Region
+     * @return Settlement
      */
     public function setName($name)
     {
@@ -74,7 +80,7 @@ class Region
      * Add realEstates
      *
      * @param \Spolischook\RealEstateBundle\Entity\RealEstate $realEstates
-     * @return Region
+     * @return City
      */
     public function addRealEstate(\Spolischook\RealEstateBundle\Entity\RealEstate $realEstates)
     {
@@ -103,8 +109,31 @@ class Region
         return $this->realEstates;
     }
 
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return City
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
     public function __toString()
     {
-        return $this->name ? $this->name : 'region';
+        return $this->name ? $this->name : 'city';
     }
 }

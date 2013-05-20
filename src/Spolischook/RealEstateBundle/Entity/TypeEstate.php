@@ -3,11 +3,12 @@
 namespace Spolischook\RealEstateBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * TypeEstate
  *
- * @ORM\Table()
+ * @ORM\Table(name="type_estate")
  * @ORM\Entity
  */
 class TypeEstate
@@ -28,6 +29,15 @@ class TypeEstate
      */
     private $name;
 
+    /** @ORM\ManyToOne(targetEntity="Category", inversedBy="types") */
+    private $category;
+
+    /** @ORM\OneToMany(targetEntity="RealEstate", mappedBy="typeEstate") */
+    private $realEstates;
+
+    public function __construct() {
+        $this->realEstates = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -60,5 +70,66 @@ class TypeEstate
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \Spolischook\RealEstateBundle\Entity\Category $category
+     * @return TypeEstate
+     */
+    public function setCategory(\Spolischook\RealEstateBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Spolischook\RealEstateBundle\Entity\Category 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Add realEstates
+     *
+     * @param \Spolischook\RealEstateBundle\Entity\RealEstate $realEstates
+     * @return TypeEstate
+     */
+    public function addRealEstate(\Spolischook\RealEstateBundle\Entity\RealEstate $realEstates)
+    {
+        $this->realEstates[] = $realEstates;
+
+        return $this;
+    }
+
+    /**
+     * Remove realEstates
+     *
+     * @param \Spolischook\RealEstateBundle\Entity\RealEstate $realEstates
+     */
+    public function removeRealEstate(\Spolischook\RealEstateBundle\Entity\RealEstate $realEstates)
+    {
+        $this->realEstates->removeElement($realEstates);
+    }
+
+    /**
+     * Get realEstates
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getRealEstates()
+    {
+        return $this->realEstates;
+    }
+
+    public function __toString()
+    {
+        return $this->name ? $this->name : 'type_estate';
     }
 }
