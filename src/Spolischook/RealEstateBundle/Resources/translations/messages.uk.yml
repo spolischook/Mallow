@@ -1,0 +1,25 @@
+#type of street
+street: вулиця
+boulevard: бульвар
+prospectus: проспект
+descent: узвіз
+backstreet: провулок
+
+#type of city
+address: Адреси
+boulevard: бульвар
+backstreet: провулок
+city: місто
+cities: Населені пункти
+descent: узвіз
+village: село
+urban_village: смт
+prospectus: проспект
+regions: Райони міста
+street: вулиця
+streets: Вулиці
+
+sonata:
+    name: Назва
+    type: Тип
+
