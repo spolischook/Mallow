@@ -22,6 +22,13 @@ class RealEstate
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="priceUah", type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="house", type="integer")
@@ -31,56 +38,56 @@ class RealEstate
     /**
      * @var integer
      *
-     * @ORM\Column(name="fraction", type="integer")
+     * @ORM\Column(name="fraction", type="integer", nullable=true)
      */
     private $fraction;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="room", type="integer")
+     * @ORM\Column(name="room", type="integer", nullable=true)
      */
     private $room;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="space", type="integer")
+     * @ORM\Column(name="space", type="integer", nullable=true)
      */
     private $space;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="living_space", type="integer")
+     * @ORM\Column(name="living_space", type="integer", nullable=true)
      */
     private $livingSpace;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="kitchen_space", type="integer")
+     * @ORM\Column(name="kitchen_space", type="integer", nullable=true)
      */
     private $kitchenSpace;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="land_space", type="integer")
+     * @ORM\Column(name="land_space", type="integer", nullable=true)
      */
     private $landSpace;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="nb_floors", type="integer")
+     * @ORM\Column(name="nb_floors", type="integer", nullable=true)
      */
     private $nbFloors;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="floor", type="integer")
+     * @ORM\Column(name="floor", type="integer", nullable=true)
      */
     private $floor;
 
@@ -101,21 +108,21 @@ class RealEstate
     /**
      * @var integer
      *
-     * @ORM\Column(name="priceUsd", type="integer")
+     * @ORM\Column(name="price_usd", type="integer")
      */
     private $priceUsd;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="priceUah", type="string", length=255)
+     * @ORM\Column(name="price_uah", type="integer")
      */
     private $priceUah;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="chaffer", type="string", length=255)
+     * @ORM\Column(name="chaffer", type="boolean")
      */
     private $chaffer;
 
@@ -136,16 +143,19 @@ class RealEstate
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description_ad", type="text")
+     * @ORM\Column(name="description_ad", type="text", nullable=true)
      */
     private $descriptionAd;
+
+    /** @ORM\ManyToOne(targetEntity="Category", inversedBy="realEstates") */
+    private $category;
 
     /** @ORM\ManyToOne(targetEntity="TypeEstate", inversedBy="realEstates") */
     private $typeEstate;
@@ -679,5 +689,34 @@ class RealEstate
     public function __toString()
     {
         return $this->name ? $this->name : 'real_estate';
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return RealEstate
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    public function setCategory($category)
+    {
+        $this->category = $category;
     }
 }

@@ -38,9 +38,12 @@ class Category
      */
     private $parent;
 
+    /** @ORM\OneToMany(targetEntity="RealEstate", mappedBy="typeEstate") */
+    private $realEstates;
+
     public function __construct() {
         $this->children = new ArrayCollection();
-        $this->parents = new ArrayCollection();
+        $this->realEstates = new ArrayCollection();
     }
 
     public function __toString()
@@ -112,6 +115,39 @@ class Category
     public function getChildren()
     {
         return $this->children;
+    }
+
+    /**
+     * Add realEstates
+     *
+     * @param \Spolischook\RealEstateBundle\Entity\RealEstate $realEstate
+     * @return Category
+     */
+    public function addRealEstate(\Spolischook\RealEstateBundle\Entity\RealEstate $realEstate)
+    {
+        $this->realEstates[] = $realEstate;
+
+        return $this;
+    }
+
+    /**
+     * Remove realEstates
+     *
+     * @param \Spolischook\RealEstateBundle\Entity\RealEstate $realEstate
+     */
+    public function removeRealEstate(\Spolischook\RealEstateBundle\Entity\RealEstate $realEstate)
+    {
+        $this->realEstates->removeElement($realEstate);
+    }
+
+    /**
+     * Get realEstates
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRealEstates()
+    {
+        return $this->realEstates;
     }
 
     /**
