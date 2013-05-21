@@ -30,8 +30,14 @@ abstract class AbstractLoad extends AbstractFixture implements OrderedFixtureInt
                     foreach ($arrayValue as $value) {
                         $entity->$adder($this->getReference($this->getEntityName() . $value));
                     }
-                }
-                elseif (1 !== strpos($array[$row][$col], '}')) {
+                } elseif (0 === strpos($array[$row][$col], '&')) {
+                    $setter = 'set' . ucfirst($array[0][$col]);
+                    $reference = substr($array[$row][$col], 1);
+                    $entity->$setter($this->getReference($reference));
+                } elseif ('null' == $array[$row][$col]) {
+                    $setter = 'set' . ucfirst($array[0][$col]);
+                    $entity->$setter(null);
+                } elseif (1 !== strpos($array[$row][$col], '}')) {
                     $setter = 'set' . ucfirst($array[0][$col]);
                     $entity->$setter($array[$row][$col]);
                 }
