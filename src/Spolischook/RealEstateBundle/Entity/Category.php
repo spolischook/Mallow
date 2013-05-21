@@ -32,17 +32,14 @@ class Category
     /** @ORM\OneToMany(targetEntity="TypeEstate", mappedBy="category") */
     private $types;
 
-    /** @ORM\ManyToMany(targetEntity="Category", mappedBy="parents") */
+    /** @ORM\OneToMany(targetEntity="Category", mappedBy="parent") */
     private $children;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Category", inversedBy="children")
-     * @ORM\JoinTable(name="category_category",
-     *      joinColumns={@ORM\JoinColumn(name="child_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="parent_id", referencedColumnName="id")}
-     *      )
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="children")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      */
-    private $parents;
+    private $parent;
 
     public function __construct() {
         $this->types = new ArrayCollection();
@@ -50,6 +47,10 @@ class Category
         $this->parents = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->name ? $this->name : 'category';
+    }
 
     /**
      * Get id
@@ -120,12 +121,12 @@ class Category
     /**
      * Add children
      *
-     * @param Category $child
+     * @param \Spolischook\RealEstateBundle\Entity\Category $children
      * @return Category
      */
-    public function addChild(Category $child)
+    public function addChild(\Spolischook\RealEstateBundle\Entity\Category $children)
     {
-        $this->children[] = $child;
+        $this->children[] = $children;
 
         return $this;
     }
@@ -133,9 +134,9 @@ class Category
     /**
      * Remove children
      *
-     * @param Category $children
+     * @param \Spolischook\RealEstateBundle\Entity\Category $children
      */
-    public function removeChild(Category $children)
+    public function removeChild(\Spolischook\RealEstateBundle\Entity\Category $children)
     {
         $this->children->removeElement($children);
     }
@@ -151,41 +152,26 @@ class Category
     }
 
     /**
-     * Add parents
+     * Set parent
      *
-     * @param Category $parent
+     * @param \Spolischook\RealEstateBundle\Entity\Category $parent
      * @return Category
      */
-    public function addParent(Category $parent)
+    public function setParent(\Spolischook\RealEstateBundle\Entity\Category $parent = null)
     {
-        $this->parents[] = $parent;
-        $parent->addChild($this);
+        $this->parent = $parent;
+        $parent == null ?:$parent->addChild($this);
 
         return $this;
     }
 
     /**
-     * Remove parents
+     * Get parent
      *
-     * @param Category $parent
+     * @return \Spolischook\RealEstateBundle\Entity\Category 
      */
-    public function removeParent(Category $parent)
+    public function getParent()
     {
-        $this->parents->removeElement($parent);
-    }
-
-    /**
-     * Get parents
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getParents()
-    {
-        return $this->parents;
-    }
-
-    public function __toString()
-    {
-        return $this->name ? $this->name : 'category';
+        return $this->parent;
     }
 }
