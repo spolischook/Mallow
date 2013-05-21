@@ -16,7 +16,6 @@ class LoadCategoryData extends AbstractLoad
         return new Category();
     }
 
-
     /**
      * Get the order of this fixture
      *
