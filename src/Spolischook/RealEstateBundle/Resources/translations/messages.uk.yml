@@ -19,6 +19,9 @@ regions: Райони міста
 street: вулиця
 streets: Вулиці
 
+real_estate: Нерухомість
+type_estates: Види нерехомості
+
 sonata:
     name: Назва
     type: Тип
