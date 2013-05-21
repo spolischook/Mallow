@@ -24,5 +24,6 @@ type_estates: Види нерехомості
 
 sonata:
     name: Назва
+    parent_category: Батьківська категорія
     type: Тип
 
