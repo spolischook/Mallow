@@ -29,9 +29,6 @@ class Category
      */
     private $name;
 
-    /** @ORM\OneToMany(targetEntity="TypeEstate", mappedBy="category") */
-    private $types;
-
     /** @ORM\OneToMany(targetEntity="Category", mappedBy="parent") */
     private $children;
 
@@ -42,7 +39,6 @@ class Category
     private $parent;
 
     public function __construct() {
-        $this->types = new ArrayCollection();
         $this->children = new ArrayCollection();
         $this->parents = new ArrayCollection();
     }
@@ -83,39 +79,6 @@ class Category
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Add types
-     *
-     * @param \Spolischook\RealEstateBundle\Entity\TypeEstate $types
-     * @return Category
-     */
-    public function addType(\Spolischook\RealEstateBundle\Entity\TypeEstate $types)
-    {
-        $this->types[] = $types;
-
-        return $this;
-    }
-
-    /**
-     * Remove types
-     *
-     * @param \Spolischook\RealEstateBundle\Entity\TypeEstate $types
-     */
-    public function removeType(\Spolischook\RealEstateBundle\Entity\TypeEstate $types)
-    {
-        $this->types->removeElement($types);
-    }
-
-    /**
-     * Get types
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTypes()
-    {
-        return $this->types;
     }
 
     /**

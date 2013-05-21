@@ -29,9 +29,6 @@ class TypeEstate
      */
     private $name;
 
-    /** @ORM\ManyToOne(targetEntity="Category", inversedBy="types") */
-    private $category;
-
     /** @ORM\OneToMany(targetEntity="RealEstate", mappedBy="typeEstate") */
     private $realEstates;
 
@@ -70,29 +67,6 @@ class TypeEstate
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set category
-     *
-     * @param \Spolischook\RealEstateBundle\Entity\Category $category
-     * @return TypeEstate
-     */
-    public function setCategory(\Spolischook\RealEstateBundle\Entity\Category $category = null)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return \Spolischook\RealEstateBundle\Entity\Category 
-     */
-    public function getCategory()
-    {
-        return $this->category;
     }
 
     /**
