@@ -17,3 +17,7 @@ real_estate:
 media_bundle:
     resource: "@MediaBundle/Resources/config/routing.yml"
     prefix:   /
+
+_imagine:
+    resource: .
+    type:     imagine

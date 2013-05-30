@@ -31,6 +31,7 @@ class AppKernel extends Kernel
             new Spolischook\RealEstateBundle\RealEstateBundle(),
             new Spolischook\UserBundle\UserBundle(),
             new Spolischook\MediaBundle\MediaBundle(),
+            new Liip\ImagineBundle\LiipImagineBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
