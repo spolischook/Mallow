@@ -1,0 +1,4 @@
+| name                 | username | email           | enabled | plainPassword | locked | expired | roles        |
+| Алена Павловна       | alena    | alena@mail.ru   | true    | alena         | false  | false   | [ROLE_AGENT] |
+| Администратор        | admin    | admin@gmail.com | true    | admin         | false  | false   | [ROLE_ADMIN] |
+| Рядовой Пользователь | user     | user@mail.ru    | true    | user          | false  | false   | [ROLE_USER]  |

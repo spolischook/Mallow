@@ -1,3 +1,7 @@
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
     prefix: /admin
@@ -9,3 +13,7 @@ _sonata_admin:
 
 real_estate:
     resource: "@RealEstateBundle/Resources/config/routing.yml"
+
+media_bundle:
+    resource: "@MediaBundle/Resources/config/routing.yml"
+    prefix:   /

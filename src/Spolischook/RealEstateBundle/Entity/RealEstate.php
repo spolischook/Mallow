@@ -3,11 +3,14 @@
 namespace Spolischook\RealEstateBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Spolischook\MediaBundle\Entity\Image;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * RealEstate
  *
  * @ORM\Table(name="real_estate")
+ * @ORM\HasLifecycleCallbacks
  * @ORM\Entity
  */
 class RealEstate
@@ -115,28 +118,21 @@ class RealEstate
     /**
      * @var string
      *
-     * @ORM\Column(name="price_uah", type="integer")
-     */
-    private $priceUah;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="chaffer", type="boolean")
+     * @ORM\Column(name="chaffer", type="boolean", nullable=true)
      */
     private $chaffer;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="in_stock", type="boolean")
+     * @ORM\Column(name="in_stock", type="boolean", nullable=true)
      */
     private $inStock;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="urgently", type="boolean")
+     * @ORM\Column(name="urgently", type="boolean", nullable=true)
      */
     private $urgently;
 
@@ -169,6 +165,16 @@ class RealEstate
     /** @ORM\ManyToOne(targetEntity="Street", inversedBy="realEstates") */
     private $street;
 
+    /** @ORM\OneToMany(targetEntity="\Spolischook\MediaBundle\Entity\Image", mappedBy="realEstate", cascade={"all"}, orphanRemoval=true) */
+    private $images;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->images = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -688,7 +694,7 @@ class RealEstate
 
     public function __toString()
     {
-        return $this->name ? $this->name : 'real_estate';
+        return $this->name ? $this->name : 'real_estate_object';
     }
 
     /**
@@ -718,5 +724,52 @@ class RealEstate
     public function setCategory($category)
     {
         $this->category = $category;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function setNameIfNotIsset()
+    {
+        if ($this->name == null) {
+            $this->name =
+                $this->getTypeEstate()->getName() .', '.
+                $this->getCity()->getName();
+        }
+    }
+
+    /**
+     * Add images
+     *
+     * @param \Spolischook\MediaBundle\Entity\Image $images
+     * @return RealEstate
+     */
+    public function addImage(\Spolischook\MediaBundle\Entity\Image $images)
+    {
+        $this->images[] = $images;
+        $images->setRealEstate($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove images
+     *
+     * @param \Spolischook\MediaBundle\Entity\Image $images
+     */
+    public function removeImage(\Spolischook\MediaBundle\Entity\Image $images)
+    {
+        $this->images->removeElement($images);
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
 }

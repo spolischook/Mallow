@@ -1,0 +1,10 @@
+{% extends 'SonataAdminBundle:Form:form_admin_fields.html.twig' %}
+{% block integer_widget %}
+    {% spaceless %}
+        {% set type = type|default('number') %}
+        {{ block('form_widget_simple') }}
+        {% if space_units is defined %}
+            {{ space_units|trans }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock integer_widget %}

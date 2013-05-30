@@ -5,13 +5,25 @@ prospectus: проспект
 descent: узвіз
 backstreet: провулок
 
-#type of city
+building_material:
+    title: Матеріал
+    brick: цегла
+    clay_brick: глина обкладена цеглою
+    monolith: моноліт
+    prefabricated: панель
+    shells: ракушняк
+    wood_brick: дерево обкладене цеглою
+
+#address
 address: Адреси
 boulevard: бульвар
 backstreet: провулок
 city: місто
 cities: Населені пункти
 descent: узвіз
+house: Будинок
+fraction: Дріб
+room: кв.
 village: село
 urban_village: смт
 prospectus: проспект
@@ -19,8 +31,32 @@ regions: Райони міста
 street: вулиця
 streets: Вулиці
 
+category: Категорія
+price_usd: Ціна у.о.
+price_uah: Ціна грн.
 real_estate: Нерухомість
+real_estate_object: Об’єкт нерухомості
+real_estates: Об’єкти нерухомості
+region: Район
+space: Площа нерухомості
+living_space: Жилая площадь
+name: Назва
+kitchen_space: Площа кухні
+land_space: Площа зем. діл.
+nb_floors: Поверхів
+floor: Поверх
+
 type_estates: Види нерехомості
+type_estate: Вид нерухомості
+
+repair:
+    title: Ремонт
+    no_repair: без ремонту
+    prepared_under_repair: підготовлено під ремонт
+    residential_status: жилий стан
+    redecorating: косметичний ремонт
+    renovation: євро ремонт
+    super_repair: дизайнерський ремонт
 
 sonata:
     name: Назва

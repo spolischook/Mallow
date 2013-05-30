@@ -1,0 +1,28 @@
+#sonata-real-estate .form_row {margin-top: 10px;}
+#sonata-real-estate .form_row input,
+#sonata-real-estate .form_row select {margin-left: 10px; width: inherit;}
+
+#sonata-real-estate #house,
+#sonata-real-estate #nbFloors,
+#sonata-real-estate #space,
+#sonata-real-estate #livingSpace,
+#sonata-real-estate #kitchenSpace {float: left;}
+#sonata-real-estate #house input,
+#sonata-real-estate #nbFloors input,
+#sonata-real-estate #floor input,
+#sonata-real-estate #fraction input,
+#sonata-real-estate #room input,
+#sonata-real-estate #space input,
+#sonata-real-estate #livingSpace input,
+#sonata-real-estate #kitchenSpace input,
+#sonata-real-estate #landSpace input { width: 80px; }
+
+#sonata-real-estate #fraction,
+#sonata-real-estate #floor      {float: left}
+#sonata-real-estate #fraction label,
+#sonata-real-estate #floor label,
+#sonata-real-estate #livingSpace label,
+#sonata-real-estate #kitchenSpace label,
+#sonata-real-estate #room label,
+#sonata-real-estate #buildingMaterial label,
+#sonata-real-estate #landSpace label {width: auto; padding-left: 10px;}
