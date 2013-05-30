@@ -13,7 +13,7 @@ class ImageAdmin extends Admin
     {
         $formMapper
             ->add('name')
-            ->add('file', 'file');
+            ->add('file', 'file', array('image_path' => 'webPath'));
     }
 
     public function configureListFields(ListMapper $listMapper)

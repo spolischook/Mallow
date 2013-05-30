@@ -11,5 +11,11 @@
             <argument>Spolischook\MediaBundle\Entity\Image</argument>
             <argument>SonataAdminBundle:CRUD</argument>
         </service>
+
+        <service id="spolischook_media_bundle.image_type_extension"
+                 class="Spolischook\MediaBundle\Form\Extension\ImageTypeExtension"
+                >
+            <tag name="form.type_extension" alias="file" />
+        </service>
     </services>
 </container>
