@@ -32,6 +32,17 @@ street: вулиця
 streets: Вулиці
 
 category: Категорія
+chaffer: Торг
+client: Клієнт
+description: Описание
+description_ad: Описание для от и до
+floor: Поверх
+in_stock: У продажу
+kitchen_space: Площа кухні
+living_space: Жилая площадь
+land_space: Площа зем. діл.
+name: Назва
+nb_floors: Поверхів
 price_usd: Ціна у.о.
 price_uah: Ціна грн.
 real_estate: Нерухомість
@@ -39,15 +50,9 @@ real_estate_object: Об’єкт нерухомості
 real_estates: Об’єкти нерухомості
 region: Район
 space: Площа нерухомості
-living_space: Жилая площадь
-name: Назва
-kitchen_space: Площа кухні
-land_space: Площа зем. діл.
-nb_floors: Поверхів
-floor: Поверх
-
 type_estates: Види нерехомості
 type_estate: Вид нерухомості
+urgently: Срочно
 
 repair:
     title: Ремонт
