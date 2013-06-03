@@ -1,0 +1,6 @@
+| name                 | enabled | locked | expired | roles        |
+| Сергей Васильевич    | true    | false  | false   | [ROLE_USER]  |
+| Вадим Анатолиевич    | true    | false  | false   | [ROLE_USER]  |
+| Дмитрий Лебедев      | true    | false  | false   | [ROLE_USER]  |
+| Александр Воробьев   | true    | false  | false   | [ROLE_USER]  |
+| Олег Николаевич      | true    | false  | false   | [ROLE_USER]  |
