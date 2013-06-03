@@ -177,4 +177,11 @@ class User extends BaseUser
     {
         return $this->updated;
     }
+
+    public function __toString()
+    {
+        return $this->name != null
+            ? $this->name
+            : 'new user';
+    }
 }
