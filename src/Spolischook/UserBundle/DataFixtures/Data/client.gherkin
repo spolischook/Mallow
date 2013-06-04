@@ -1,6 +1,6 @@
-| name                 | enabled | locked | expired | roles        |
-| Сергей Васильевич    | true    | false  | false   | [ROLE_USER]  |
-| Вадим Анатолиевич    | true    | false  | false   | [ROLE_USER]  |
-| Дмитрий Лебедев      | true    | false  | false   | [ROLE_USER]  |
-| Александр Воробьев   | true    | false  | false   | [ROLE_USER]  |
-| Олег Николаевич      | true    | false  | false   | [ROLE_USER]  |
+| name                 | phone1          | enabled | locked | expired | roles        |
+| Сергей Васильевич    | 093-455-65-75   | true    | false  | false   | [ROLE_USER]  |
+| Вадим Анатолиевич    | 067-455-32-21   | true    | false  | false   | [ROLE_USER]  |
+| Дмитрий Лебедев      | 455-222         | true    | false  | false   | [ROLE_USER]  |
+| Александр Воробьев   | 0509863215      | true    | false  | false   | [ROLE_USER]  |
+| Олег Николаевич      | (044) 188-15-26 | true    | false  | false   | [ROLE_USER]  |

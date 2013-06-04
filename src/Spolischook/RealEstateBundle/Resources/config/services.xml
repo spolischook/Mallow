@@ -41,11 +41,11 @@
             <argument />
             <argument>Spolischook\RealEstateBundle\Entity\RealEstate</argument>
             <argument>SonataAdminBundle:CRUD</argument>
-            <!--<call method="setTemplates">-->
-                <!--<argument type="collection">-->
-                    <!--<argument key="edit">RealEstateBundle:RealEstate:edit.html.twig</argument>-->
-                <!--</argument>-->
-            <!--</call>-->
+            <call method="setTemplates">
+                <argument type="collection">
+                    <argument key="edit">RealEstateBundle:RealEstate:edit.html.twig</argument>
+                </argument>
+            </call>
         </service>
 
         <service id="real_estate.space_type_extension"

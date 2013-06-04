@@ -1,12 +1,16 @@
 #sonata-real-estate .form_row {margin-top: 10px;}
+#sonata-real-estate #inStock {margin-top: 20px;margin-bottom: 20px;}
 #sonata-real-estate .form_row input,
-#sonata-real-estate .form_row select {margin-left: 10px; width: inherit;}
+#sonata-real-estate .form_row select,
+#sonata-real-estate .form_row textarea {margin-left: 10px; width: inherit;}
 
 #sonata-real-estate #house,
 #sonata-real-estate #nbFloors,
 #sonata-real-estate #space,
 #sonata-real-estate #livingSpace,
-#sonata-real-estate #kitchenSpace {float: left;}
+#sonata-real-estate #kitchenSpace,
+#sonata-real-estate #priceUsd,
+#sonata-real-estate #chaffer {float: left;}
 #sonata-real-estate #house input,
 #sonata-real-estate #nbFloors input,
 #sonata-real-estate #floor input,
@@ -16,6 +20,7 @@
 #sonata-real-estate #livingSpace input,
 #sonata-real-estate #kitchenSpace input,
 #sonata-real-estate #landSpace input { width: 80px; }
+#sonata-real-estate #priceUsd input {width: 100px;}
 
 #sonata-real-estate #fraction,
 #sonata-real-estate #floor      {float: left}
@@ -25,4 +30,6 @@
 #sonata-real-estate #kitchenSpace label,
 #sonata-real-estate #room label,
 #sonata-real-estate #buildingMaterial label,
-#sonata-real-estate #landSpace label {width: auto; padding-left: 10px;}
+#sonata-real-estate #landSpace label,
+#sonata-real-estate #chaffer label,
+#sonata-real-estate #urgently label {width: auto; padding-left: 10px;}

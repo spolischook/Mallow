@@ -6,7 +6,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
-use Symfony\Component\Translation\Translator;
+use Doctrine\ORM\EntityRepository;
 
 class RealEstateAdmin extends Admin
 {
@@ -23,19 +23,28 @@ class RealEstateAdmin extends Admin
         $formMapper
             ->add('name', null, array('label' => 'name', 'attr' => array('class' => 'name')))
             ->add('typeEstate', null, array('label' => 'type_estate', 'required' => true, 'attr' => array('class' => 'type-estate')))
-            ->add('category', null, array('label' => 'category', 'required' => true))
-            ->add('city', null, array('label' => 'city', 'required' => true))
-            ->add('region', null, array('label' => 'region'))
-            ->add('street', null, array('label' => 'street'))
-            ->add('house', null, array('label' => 'house'))
+            ->add('category', 'entity', array(
+                'label' => 'category',
+                'required' => true,
+                'class' => 'RealEstateBundle:Category',
+                'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('c')
+                        ->select('c')
+                        ->where('c.parent IS NOT NULL');
+                },
+            ))
+            ->add('city', null, array('label'     => 'city', 'required' => true))
+            ->add('region', null, array('label'   => 'region'))
+            ->add('street', null, array('label'   => 'street'))
+            ->add('house', null, array('label'    => 'house'))
             ->add('fraction', null, array('label' => '/'))
-            ->add('room', null, array('label' => 'room'))
+            ->add('room', null, array('label'     => 'room'))
             ->add('nbFloors', null, array('label' => 'nb_floors'))
-            ->add('floor', null, array('label' => 'floor'))
+            ->add('floor', null, array('label'    => 'floor'))
             ->add('buildingMaterial', 'choice', array(
-                'label' => 'building_material.title',
+                'label'     => 'building_material.title',
                 'required'  => false,
-                'choices'  => array(
+                'choices'   => array(
                     'brick'         => 'building_material.brick',
                     'monolith'      => 'building_material.monolith',
                     'prefabricated' => 'building_material.prefabricated',
@@ -48,6 +57,9 @@ class RealEstateAdmin extends Admin
             ->add('kitchenSpace', 'integer', array('label' => 'kitchen_space', 'required' => false))
             ->add('landSpace', 'integer', array('label' => 'land_space', 'required' => false))
             ->add('priceUsd', null, array('label' => 'price_usd', 'required' => true))
+            ->add('chaffer', null, array('label' => 'chaffer'))
+            ->add('urgently', null, array('label' => 'urgently'))
+            ->add('inStock', null, array('label' => 'in_stock', 'data' => true))
             ->add('space', null, array('label' => 'space'))
             ->add('repair', 'choice', array(
                 'label' => 'repair.title',
@@ -60,9 +72,14 @@ class RealEstateAdmin extends Admin
                     'renovation'            => $this->trans('repair.renovation'),
                     'super_repair'          => $this->trans('repair.super_repair'),
                 )))
-//            ->add('images', 'file', array('label' => 'images', 'required' => false))
+            ->add('client', null, array(
+                'label' => 'client',
+                'by_reference' => true
+            ))
+            ->add('description', null, array('label' => 'description'))
+            ->add('descriptionAd', null, array('label' => 'description_ad'))
             ->add('images', 'sonata_type_collection',
-                array('required' => false, 'by_reference' => false),
+                array('required' => false, 'by_reference' => false, 'label' => 'images'),
                 array('edit' => 'inline', 'inline' => 'table')
             )
         ;

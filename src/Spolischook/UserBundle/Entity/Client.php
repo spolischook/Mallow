@@ -28,6 +28,18 @@ class Client extends BaseUser
      */
     protected $slug;
 
+    /** @ORM\Column(name="phone1", type="string", length=255) */
+    protected $phone1;
+
+    /** @ORM\Column(name="phone2", type="string", length=255, nullable=true) */
+    protected $phone2;
+
+    /** @ORM\Column(name="phone3", type="string", length=255, nullable=true) */
+    protected $phone3;
+
+    /** @ORM\OneToMany(targetEntity="Spolischook\RealEstateBundle\Entity\RealEstate", mappedBy="client") */
+    protected $realEstates;
+
     /** @ORM\Column(name="deletedAt", type="datetime", nullable=true) */
     private $deletedAt;
 
@@ -186,5 +198,74 @@ class Client extends BaseUser
         return $this->name != null
             ? $this->name
             : 'new client';
+    }
+
+    /**
+     * Set phone1
+     *
+     * @param string $phone1
+     * @return Client
+     */
+    public function setPhone1($phone1)
+    {
+        $this->phone1 = $phone1;
+
+        return $this;
+    }
+
+    /**
+     * Get phone1
+     *
+     * @return string 
+     */
+    public function getPhone1()
+    {
+        return $this->phone1;
+    }
+
+    /**
+     * Set phone2
+     *
+     * @param string $phone2
+     * @return Client
+     */
+    public function setPhone2($phone2)
+    {
+        $this->phone2 = $phone2;
+
+        return $this;
+    }
+
+    /**
+     * Get phone2
+     *
+     * @return string 
+     */
+    public function getPhone2()
+    {
+        return $this->phone2;
+    }
+
+    /**
+     * Set phone3
+     *
+     * @param string $phone3
+     * @return Client
+     */
+    public function setPhone3($phone3)
+    {
+        $this->phone3 = $phone3;
+
+        return $this;
+    }
+
+    /**
+     * Get phone3
+     *
+     * @return string 
+     */
+    public function getPhone3()
+    {
+        return $this->phone3;
     }
 }

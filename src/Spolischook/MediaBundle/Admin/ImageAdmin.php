@@ -12,7 +12,7 @@ class ImageAdmin extends Admin
     public function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name')
+            ->add('name', null, array('required' => false))
             ->add('file', 'file', array('image_path' => 'webPath'));
     }
 

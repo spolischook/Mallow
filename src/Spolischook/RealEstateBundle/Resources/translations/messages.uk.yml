@@ -46,6 +46,7 @@ name: Назва
 nb_floors: Поверхів
 price_usd: Ціна у.о.
 price_uah: Ціна грн.
+phone: Телефон
 real_estate: Нерухомість
 real_estate_object: Об’єкт нерухомості
 real_estates: Об’єкти нерухомості
@@ -54,6 +55,7 @@ space: Площа нерухомості
 type_estates: Види нерехомості
 type_estate: Вид нерухомості
 urgently: Срочно
+user_full_name: ПІБ
 
 repair:
     title: Ремонт

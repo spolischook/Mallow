@@ -168,6 +168,12 @@ class RealEstate
     /** @ORM\OneToMany(targetEntity="\Spolischook\MediaBundle\Entity\Image", mappedBy="realEstate", cascade={"all"}, orphanRemoval=true) */
     private $images;
 
+    /** @ORM\ManyToOne(targetEntity="\Spolischook\UserBundle\Entity\Client", inversedBy="realEstate") */
+    private $client;
+
+    /** @ORM\ManyToOne(targetEntity="\Spolischook\UserBundle\Entity\User") */
+    private $agent;
+
     /**
      * Constructor
      */
@@ -771,5 +777,37 @@ class RealEstate
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * @param mixed $client
+     */
+    public function setClient($client)
+    {
+        $this->client = $client;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAgent()
+    {
+        return $this->agent;
+    }
+
+    /**
+     * @param mixed $agent
+     */
+    public function setAgent($agent)
+    {
+        $this->agent = $agent;
     }
 }

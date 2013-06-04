@@ -17,5 +17,9 @@
                 >
             <tag name="form.type_extension" alias="file" />
         </service>
+        <service id="spolischook_media_bundle.form.type.image"
+                 class="Spolischook\MediaBundle\Form\Type\ImageType">
+            <tag name="form.type" alias="image" />
+        </service>
     </services>
 </container>
