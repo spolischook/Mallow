@@ -26,6 +26,7 @@ class RealEstateAdmin extends Admin
             ->add('category', 'entity', array(
                 'label' => 'category',
                 'required' => true,
+                'property' => 'nameWithParent',
                 'class' => 'RealEstateBundle:Category',
                 'query_builder' => function(EntityRepository $er) {
                     return $er->createQueryBuilder('c')

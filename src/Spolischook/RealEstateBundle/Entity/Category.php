@@ -29,6 +29,8 @@ class Category
      */
     private $name;
 
+    private $nameWithParent;
+
     /** @ORM\OneToMany(targetEntity="Category", mappedBy="parent") */
     private $children;
 
@@ -172,5 +174,13 @@ class Category
     public function getParent()
     {
         return $this->parent;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNameWithParent()
+    {
+        return $this->getParent()->getName().' / '.$this->name;
     }
 }
