@@ -168,8 +168,11 @@ class RealEstate
     /** @ORM\OneToMany(targetEntity="\Spolischook\MediaBundle\Entity\Image", mappedBy="realEstate", cascade={"all"}, orphanRemoval=true) */
     private $images;
 
-    /** @ORM\ManyToOne(targetEntity="\Spolischook\UserBundle\Entity\Client", inversedBy="realEstate") */
-    private $client;
+    /** @ORM\Column(name="client_name", type="string", length=255) */
+    private $clientName;
+
+    /** @ORM\Column(name="client_contact", type="string", length=255) */
+    private $clientContact;
 
     /** @ORM\ManyToOne(targetEntity="\Spolischook\UserBundle\Entity\User") */
     private $agent;
@@ -782,22 +785,6 @@ class RealEstate
     /**
      * @return mixed
      */
-    public function getClient()
-    {
-        return $this->client;
-    }
-
-    /**
-     * @param mixed $client
-     */
-    public function setClient($client)
-    {
-        $this->client = $client;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getAgent()
     {
         return $this->agent;
@@ -809,5 +796,37 @@ class RealEstate
     public function setAgent($agent)
     {
         $this->agent = $agent;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClientName()
+    {
+        return $this->clientName;
+    }
+
+    /**
+     * @param mixed $clientName
+     */
+    public function setClientName($clientName)
+    {
+        $this->clientName = $clientName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClientContact()
+    {
+        return $this->clientContact;
+    }
+
+    /**
+     * @param mixed $clientContact
+     */
+    public function setClientContact($clientContact)
+    {
+        $this->clientContact = $clientContact;
     }
 }
