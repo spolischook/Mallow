@@ -36,9 +36,11 @@ regions: Райони міста
 street: вулиця
 streets: Вулиці
 
+agent: Агент
 category: Категорія
 chaffer: Торг
-client: Клієнт
+client_name: ПІБ клієнта
+client_contact: Контакти кліента
 description: Описание
 description_ad: Описание для от и до
 floor: Поверх
@@ -71,8 +73,28 @@ redecorating: косметичний ремонт
 renovation: євро ремонт
 super_repair: дизайнерський ремонт
 
+#breadcrumb
+City List: Список населених пунктів
+Dashboard: Головна Сторінка
+Real Estate List: Список об’єктів нерухомості
+Region List: Список районів міста
+Street List: Список вулиць
+Type Estate List: Список типів нерухомості
+
+
 sonata:
     name: Назва
     parent_category: Батьківська категорія
     type: Тип
 
+admin_dashboard: Адмін панель
+agents: Агенти
+back_to: Перейдіть у
+clients: Клієнти
+contact_is_hidden: Дізнайтеся контакти у агента
+hello: Привіт!
+logout: Вийти
+warning: Увага!
+welcome: Привіт
+you_at_admin_dashboard: Тут ти можешь знайти або створити об’єкти нерухомості
+you_have_no_permission_to_edit_this_estate: У вас недостатньо прав для редагування цього об’єкту
