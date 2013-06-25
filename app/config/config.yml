@@ -113,6 +113,8 @@ sonata_admin:
         blocks:
             # display a dashboard block
             - { position: left, type: sonata.admin.block.admin_list }
+            - { position: right, type: sonata.block.service.text, settings: { template: "RealEstateBundle:RealEstate:dashboard_description_right.html.twig"} }
+            - { position: right, type: sonata.block.service.rss, settings: { title: Новини нерухомості України, url: http://dom.ria.ua/ru/news/rss/ }}
 
 fos_user:
     db_driver: orm
