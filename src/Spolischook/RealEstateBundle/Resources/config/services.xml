@@ -53,5 +53,16 @@
                 >
             <tag name="form.type_extension" alias="integer" />
         </service>
+        <service id="set_estate_agent.listener" class="Spolischook\RealEstateBundle\EventListener\SetEstateAgent">
+            <tag name="doctrine.event_listener" event="prePersist" />
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
+            </call>
+        </service>
+        <service id="translate_enum_value.listener" class="Spolischook\RealEstateBundle\EventListener\TranslateEnumValue">
+            <tag name="doctrine.event_listener" event="postLoad" />
+            <argument type="service" id="translator"/>
+        </service>
+
     </services>
 </container>
