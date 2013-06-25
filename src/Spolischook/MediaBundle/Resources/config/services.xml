@@ -6,7 +6,7 @@
 
     <services>
         <service id="media.admin.image" class="Spolischook\MediaBundle\Admin\ImageAdmin">
-            <tag name="sonata.admin" manager_type="orm" group="media" label="images"/>
+            <tag name="sonata.admin" manager_type="orm" group="real_estate" label="images"/>
             <argument />
             <argument>Spolischook\MediaBundle\Entity\Image</argument>
             <argument>SonataAdminBundle:CRUD</argument>
