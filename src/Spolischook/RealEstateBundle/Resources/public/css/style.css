@@ -21,6 +21,8 @@
 #sonata-real-estate #kitchenSpace input,
 #sonata-real-estate #landSpace input { width: 80px; }
 #sonata-real-estate #priceUsd input {width: 100px;}
+#sonata-real-estate #description textarea,
+#sonata-real-estate #descriptionAd textarea {width: 500px; height: 120px;}
 
 #sonata-real-estate #fraction,
 #sonata-real-estate #floor      {float: left}
