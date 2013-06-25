@@ -57,14 +57,14 @@ type_estate: Вид нерухомості
 urgently: Срочно
 user_full_name: ПІБ
 
-repair:
-    title: Ремонт
-    no_repair: без ремонту
-    prepared_under_repair: підготовлено під ремонт
-    residential_status: жилий стан
-    redecorating: косметичний ремонт
-    renovation: євро ремонт
-    super_repair: дизайнерський ремонт
+#repair
+repair: Ремонт
+no_repair: після будівельників
+prepared_under_repair: підготовлено під ремонт
+residential_status: жилий стан
+redecorating: косметичний ремонт
+renovation: євро ремонт
+super_repair: дизайнерський ремонт
 
 sonata:
     name: Назва
