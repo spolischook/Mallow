@@ -9,12 +9,17 @@
     <body>
         <div>
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                <a href="{{ path('fos_user_security_logout') }}">
-                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                </a>
-            {#{% else %}#}
-                {#<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>#}
+                <div class="alert alert-block">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <h4>{{ 'warning'|trans }}</h4>
+                    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                    <a href="{{ path('fos_user_security_logout') }}">
+                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                    </a><br />
+                    {{ 'back_to'|trans }} <a href="{{ path('sonata_admin_dashboard') }}">{{ 'admin_dashboard'|trans }}</a>
+                {#{% else %}#}
+                    {#<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>#}
+                </div>
             {% endif %}
         </div>
 
