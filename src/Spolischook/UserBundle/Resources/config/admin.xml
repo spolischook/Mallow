@@ -5,10 +5,10 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="sonata.admin.client" class="Spolischook\UserBundle\Admin\ClientAdmin">
-            <tag name="sonata.admin" manager_type="orm" group="users" label="clients"/>
+        <service id="sonata.admin.user" class="Spolischook\UserBundle\Admin\UserAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="users" label="agents"/>
             <argument />
-            <argument>Spolischook\UserBundle\Entity\Client</argument>
+            <argument>Spolischook\UserBundle\Entity\User</argument>
             <argument>SonataAdminBundle:CRUD</argument>
         </service>
     </services>

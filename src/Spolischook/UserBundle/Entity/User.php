@@ -28,6 +28,15 @@ class User extends BaseUser
      */
     private $slug;
 
+    /** @ORM\Column(name="phone1", type="string", length=255) */
+    private $phone1;
+
+    /** @ORM\Column(name="phone2", type="string", length=255, nullable=true) */
+    private $phone2;
+
+    /** @ORM\Column(name="phone3", type="string", length=255, nullable=true) */
+    private $phone3;
+
     /** @ORM\Column(name="deletedAt", type="datetime", nullable=true) */
     private $deletedAt;
 
@@ -183,5 +192,74 @@ class User extends BaseUser
         return $this->name != null
             ? $this->name
             : 'new user';
+    }
+
+    /**
+     * Set phone1
+     *
+     * @param string $phone1
+     * @return User
+     */
+    public function setPhone1($phone1)
+    {
+        $this->phone1 = $phone1;
+
+        return $this;
+    }
+
+    /**
+     * Get phone1
+     *
+     * @return string 
+     */
+    public function getPhone1()
+    {
+        return $this->phone1;
+    }
+
+    /**
+     * Set phone2
+     *
+     * @param string $phone2
+     * @return User
+     */
+    public function setPhone2($phone2)
+    {
+        $this->phone2 = $phone2;
+
+        return $this;
+    }
+
+    /**
+     * Get phone2
+     *
+     * @return string 
+     */
+    public function getPhone2()
+    {
+        return $this->phone2;
+    }
+
+    /**
+     * Set phone3
+     *
+     * @param string $phone3
+     * @return User
+     */
+    public function setPhone3($phone3)
+    {
+        $this->phone3 = $phone3;
+
+        return $this;
+    }
+
+    /**
+     * Get phone3
+     *
+     * @return string 
+     */
+    public function getPhone3()
+    {
+        return $this->phone3;
     }
 }
