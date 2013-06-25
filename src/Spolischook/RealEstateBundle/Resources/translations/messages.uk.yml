@@ -1,3 +1,8 @@
+#type of city
+city: Місто
+village: Село
+urban_village: СМТ
+
 #type of street
 street: вулиця
 boulevard: бульвар
