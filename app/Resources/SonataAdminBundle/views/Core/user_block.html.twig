@@ -1,0 +1,8 @@
+{% block user_block %}
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        {{ 'welcome'|trans }}, {{ app.user.name }}
+        <a href="{{ path('fos_user_security_logout') }}">
+            {{ 'logout'|trans }}
+        </a>
+    {% endif %}
+{% endblock %}
