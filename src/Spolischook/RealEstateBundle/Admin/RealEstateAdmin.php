@@ -7,19 +7,52 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Doctrine\ORM\EntityRepository;
+use Symfony\Component\Security\Core\SecurityContext;
 
 class RealEstateAdmin extends Admin
 {
+    /** @var  SecurityContext */
+    protected $securityContext;
+
+    protected $datagridValues = array(
+        '_page'       => 1,
+        '_per_page'   => 25,
+        'inStock'     => array ('type' => 2, 'value' => 1),
+    );
+
     public function configureShowFields(ShowMapper $showMapper)
     {
+        if (!$this->isUserHavePermission()) {
+            $this->getRoutes()->remove('edit');
+            $this->getSubject()->setClientName($this->trans('contact_is_hidden'));
+            $this->getSubject()->setClientContact($this->trans('contact_is_hidden'));
+        }
+
         $showMapper
-            ->add('name', null, array('label' => 'sonata.name'))
-            ->add('typeEstate')
+            ->add('name', null, array('label' => 'name'))
+            ->add('typeEstate', null, array('label' => 'type_estate', 'route' => array('name' => 'show')))
+            ->add('category', null, array('label' => 'category'))
+            ->add('city', null, array('label' => 'city', 'route' => array('name' => 'show')))
+            ->add('region', null, array('label' => 'region', 'route' => array('name' => 'show')))
+            ->add('street', null, array('label' => 'street', 'route' => array('name' => 'show')))
+            ->add('priceUsd', null, array('label' => 'price_usd'))
+            ->add('nbFloors', null, array('label' => 'nb_floors'))
+            ->add('floor', null, array('label' => 'floor'))
+            ->add('space', null, array('label' => 'space'))
+            ->add('repair', null, array('label' => 'repair'))
+            ->add('clientName', null, array('label' => 'client_name', 'by_reference' => true))
+            ->add('clientContact', null, array('label' => 'client_contact', 'by_reference' => true))
+            ->add('agent', null, array('label' => 'agent', 'route' => array('name' => 'show')))
+            ->add('description', null, array('label' => 'description'))
         ;
     }
 
     public function configureFormFields(FormMapper $formMapper)
     {
+        if (!$this->isUserHavePermission()) {
+            throw new \Exception($this->trans('you_have_no_permission_to_edit_this_estate'));
+        }
+
         $formMapper
             ->add('name', null, array('label' => 'name', 'attr' => array('class' => 'name')))
             ->add('typeEstate', null, array('label' => 'type_estate', 'required' => true, 'attr' => array('class' => 'type-estate')))
@@ -63,20 +96,18 @@ class RealEstateAdmin extends Admin
             ->add('inStock', null, array('label' => 'in_stock', 'data' => true))
             ->add('space', null, array('label' => 'space'))
             ->add('repair', 'choice', array(
-                'label' => 'repair.title',
+                'label' => 'repair',
                 'required'  => false,
                 'choices'  => array(
-                    'no_repair'             => $this->trans('repair.no_repair'),
-                    'prepared_under_repair' => $this->trans('repair.prepared_under_repair'),
-                    'residential_status'    => $this->trans('repair.residential_status'),
-                    'redecorating'          => $this->trans('repair.redecorating'),
-                    'renovation'            => $this->trans('repair.renovation'),
-                    'super_repair'          => $this->trans('repair.super_repair'),
+                    'no_repair'             => $this->trans('no_repair'),
+                    'prepared_under_repair' => $this->trans('prepared_under_repair'),
+                    'residential_status'    => $this->trans('residential_status'),
+                    'redecorating'          => $this->trans('redecorating'),
+                    'renovation'            => $this->trans('renovation'),
+                    'super_repair'          => $this->trans('super_repair'),
                 )))
-            ->add('client', null, array(
-                'label' => 'client',
-                'by_reference' => true
-            ))
+            ->add('clientName', null, array('label' => 'client_name', 'by_reference' => true))
+            ->add('clientContact', null, array('label' => 'client_contact', 'by_reference' => true))
             ->add('description', null, array('label' => 'description'))
             ->add('descriptionAd', null, array('label' => 'description_ad'))
             ->add('images', 'sonata_type_collection',
@@ -89,17 +120,20 @@ class RealEstateAdmin extends Admin
     public function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name', null, array('label' => 'name'))
+            ->addIdentifier('name', null, array('label' => 'name', 'route' => array('name' => 'show')))
             ->add('typeEstate', null, array('label' => 'type_estate'))
-            ->add('category', null, array('label' => 'category'))
-            ->add('city', null, array('label' => 'city'))
-            ->add('region', null, array('label' => 'region'))
+//            ->add('category', null, array('label' => 'category'))
+            ->add('city', null, array('label' => 'city', 'route' => array('name' => 'show')))
+            ->add('region', null, array('label' => 'region', 'route' => array('name' => 'show')))
             ->add('priceUsd', null, array('label' => 'price_usd'))
             ->add('nbFloors', null, array('label' => 'nb_floors'))
             ->add('floor', null, array('label' => 'floor'))
             ->add('space', null, array('label' => 'space'))
-            ->add('repair', null, array('label' => 'repair.title'))
+            ->add('repair', null, array('label' => 'repair'))
+            ->add('agent', null, array('label' => 'agent', 'route' => array('name' => 'show')))
+            ->add('inStock', null, array('label' => 'in_stock', 'data' => true))
         ;
+
     }
 
     public function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -111,6 +145,48 @@ class RealEstateAdmin extends Admin
             ->add('region', null, array('label' => 'region'))
             ->add('nbFloors', null, array('label' => 'nb_floors'))
             ->add('floor', null, array('label' => 'floor'))
+            ->add('inStock', null, array('label' => 'in_stock'))
         ;
+    }
+
+    public function getExportFormats()
+    {
+        return array(
+            'txt'
+        );
+    }
+
+    public function setSecurityContext(SecurityContext $securityContext)
+    {
+        $this->securityContext = $securityContext;
+    }
+
+    public function isUserHavePermission()
+    {
+
+        $isUserIsOwner          = $this->getUser() == $this->getSubject()->getAgent();
+        $isUserIsSuperAdmin     = $this->isAdmin();
+
+        if (null != $this->getSubject()) {
+            //CreateAction
+            if (null === $this->getSubject()->getId()) {
+                return true;
+            }
+            if ($isUserIsOwner || $isUserIsSuperAdmin) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private function getUser()
+    {
+        return $this->securityContext->getToken()->getUser();
+    }
+
+    private function isAdmin()
+    {
+        return $this->securityContext->isGranted('ROLE_SUPER_ADMIN');
     }
 }

@@ -9,6 +9,13 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class TypeEstateAdmin extends Admin
 {
+    public function configureShowFields(ShowMapper $showMapper)
+    {
+        $showMapper
+            ->add('name', null, array('label' => 'sonata.name'))
+        ;
+    }
+
     public function configureFormFields(FormMapper $formMapper)
     {
         $formMapper

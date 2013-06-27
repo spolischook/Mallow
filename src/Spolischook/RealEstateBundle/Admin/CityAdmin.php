@@ -9,6 +9,14 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class CityAdmin extends Admin
 {
+    public function configureShowFields(ShowMapper $showMapper)
+    {
+        $showMapper
+            ->add('name', null, array('label' => 'name'))
+            ->add('type', null, array('label' => 'sonata.type'))
+        ;
+    }
+
     public function configureFormFields(FormMapper $formMapper)
     {
         $formMapper

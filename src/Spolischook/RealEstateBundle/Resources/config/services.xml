@@ -36,7 +36,7 @@
             <argument>Spolischook\RealEstateBundle\Entity\Category</argument>
             <argument>SonataAdminBundle:CRUD</argument>
         </service>
-        <service id="sonata.admin.real_estate" class="Spolischook\RealEstateBundle\Admin\RealEstateAdmin">
+        <service id="sonata.admin.realestate" class="Spolischook\RealEstateBundle\Admin\RealEstateAdmin">
             <tag name="sonata.admin" manager_type="orm" group="real_estate" label="real_estates"/>
             <argument />
             <argument>Spolischook\RealEstateBundle\Entity\RealEstate</argument>
@@ -46,11 +46,13 @@
                     <argument key="edit">RealEstateBundle:RealEstate:edit.html.twig</argument>
                 </argument>
             </call>
+            <call method="setSecurityContext">
+                <argument type="service" id="security.context" />
+            </call>
         </service>
 
-        <service id="real_estate.space_type_extension"
-                 class="Spolischook\RealEstateBundle\Form\Extension\SpaceTypeExtension"
-                >
+
+        <service id="real_estate.space_type_extension" class="Spolischook\RealEstateBundle\Form\Extension\SpaceTypeExtension">
             <tag name="form.type_extension" alias="integer" />
         </service>
         <service id="set_estate_agent.listener" class="Spolischook\RealEstateBundle\EventListener\SetEstateAgent">

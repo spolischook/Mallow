@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="media.admin.image" class="Spolischook\MediaBundle\Admin\ImageAdmin">
+        <service id="sonata.admin.image" class="Spolischook\MediaBundle\Admin\ImageAdmin">
             <tag name="sonata.admin" manager_type="orm" group="real_estate" label="images"/>
             <argument />
             <argument>Spolischook\MediaBundle\Entity\Image</argument>
