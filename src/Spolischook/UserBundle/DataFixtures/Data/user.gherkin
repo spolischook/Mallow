@@ -1,5 +1,5 @@
-| name                 | username | email           |     phone1    | enabled | plainPassword | locked | expired | roles        |
-| Алена Павловна       | alena    | alena@mail.ru   | 067-000-00-00 | true    | alena         | false  | false   | [ROLE_AGENT] |
-| Ирина Витальевна     | irina    | irina@mail.ru   | 093-555-55-55 | true    | irina         | false  | false   | [ROLE_AGENT] |
-| Администратор        | admin    | admin@gmail.com | 050-888-88-88 | true    | admin         | false  | false   | [ROLE_ADMIN] |
-| Рядовой Пользователь | user     | user@mail.ru    | 0472-33-33-33 | true    | user          | false  | false   | [ROLE_USER]  |
+| name                 | username | email           |     phone1    | enabled | plainPassword | locked | expired | roles              |
+| Алена Павловна       | alena    | alena@mail.ru   | 067-000-00-00 | true    | alena         | false  | false   | [ROLE_AGENT, ROLE_SONATA_REALESTATE_EDITOR]       |
+| Ирина Витальевна     | irina    | irina@mail.ru   | 093-555-55-55 | true    | irina         | false  | false   | [ROLE_AGENT]       |
+| Администратор        | admin    | admin@gmail.com | 050-888-88-88 | true    | admin         | false  | false   | [ROLE_SUPER_ADMIN] |
+| Рядовой Пользователь | user     | user@mail.ru    | 0472-33-33-33 | true    | user          | false  | false   | [ROLE_USER]        |
