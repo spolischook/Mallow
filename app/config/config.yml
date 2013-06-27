@@ -97,6 +97,8 @@ sonata_block:
         sonata.block.service.rss:
 
 sonata_admin:
+    security:
+        handler: sonata.admin.security.handler.role
     title:      Сонячна Країна
     title_logo: /bundles/sonataadmin/logo_title.png
     templates:
