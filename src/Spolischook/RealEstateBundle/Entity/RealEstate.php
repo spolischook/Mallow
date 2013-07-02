@@ -35,7 +35,7 @@ class RealEstate
     /**
      * @var integer
      *
-     * @ORM\Column(name="house", type="integer")
+     * @ORM\Column(name="house", type="integer", nullable=true)
      */
     private $house;
 
