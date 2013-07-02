@@ -5,6 +5,7 @@ namespace Spolischook\RealEstateBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Spolischook\MediaBundle\Entity\Image;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * RealEstate
@@ -97,6 +98,7 @@ class RealEstate
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="building_material", type="string", columnDefinition="ENUM('brick', 'monolith', 'prefabricated', 'shells', 'clay_brick', 'wood_brick')", nullable=false)
      */
     private $buildingMaterial;
@@ -104,6 +106,7 @@ class RealEstate
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="repair", type="string", columnDefinition="ENUM('no_repair', 'prepared_under_repair', 'residential_status', 'redecorating', 'renovation', 'super_repair')", nullable=false)
      */
     private $repair;
@@ -111,6 +114,7 @@ class RealEstate
     /**
      * @var integer
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="price_usd", type="integer")
      */
     private $priceUsd;
@@ -168,10 +172,20 @@ class RealEstate
     /** @ORM\OneToMany(targetEntity="\Spolischook\MediaBundle\Entity\Image", mappedBy="realEstate", cascade={"all"}, orphanRemoval=true) */
     private $images;
 
-    /** @ORM\Column(name="client_name", type="string", length=255) */
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     * @ORM\Column(name="client_name", type="string", length=255)
+     */
     private $clientName;
 
-    /** @ORM\Column(name="client_contact", type="string", length=255) */
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     * @ORM\Column(name="client_contact", type="string", length=255)
+     */
     private $clientContact;
 
     /** @ORM\ManyToOne(targetEntity="\Spolischook\UserBundle\Entity\User") */
